@@ -1,6 +1,6 @@
 package com.restaurant.rmsbackend.controller;
 
-import com.restaurant.rmsbackend.model.OrderEntity;
+import com.restaurant.rmsbackend.model.Order;
 import com.restaurant.rmsbackend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,12 +21,12 @@ public class OrderController {
     private OrderService service;
 
     @GetMapping("/")
-    public List<OrderEntity> get() {
+    public List<Order> get() {
         return service.getAll();
     }
 
     @PutMapping("/complete/{id}")
-    public OrderEntity complete(@PathVariable Long id) {
+    public Order complete(@PathVariable Long id) {
         return service.complete(id);
     }
 
