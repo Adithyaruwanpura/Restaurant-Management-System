@@ -1,0 +1,31 @@
+package com.restaurant.rmsbackend.mapper;
+import com.restaurant.rmsbackend.dto.ReservationDTO;
+import com.restaurant.rmsbackend.model.Reservation;
+public class ReservationMapper {
+    public static ReservationDTO toDTO(Reservation res) {
+        return ReservationDTO.builder()
+                .id(res.getId())
+                .customerName(res.getCustomerName())
+                .contactNumber(res.getContactNumber())
+                .date(res.getDate())
+                .time(res.getTime())
+                .numberOfGuests(res.getNumberOfGuests())
+                .tableNumber(res.getTableNumber())
+                .status(res.getStatus())
+                .build();
+    }
+
+    public static Reservation toEntity(ReservationDTO dto) {
+        return Reservation.builder()
+                .id(dto.getId())
+                .customerName(dto.getCustomerName())
+                .contactNumber(dto.getContactNumber())
+                .date(dto.getDate())
+                .time(dto.getTime())
+                .numberOfGuests(dto.getNumberOfGuests())
+                .tableNumber(dto.getTableNumber())
+                .status(dto.getStatus())
+                .build();
+    }
+
+}

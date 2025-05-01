@@ -1,4 +1,9 @@
 package com.restaurant.rmsbackend.model;
 
-public class Role {
+public enum Role {
+    ADMIN,
+    CHEF,
+    CASHIER
+
+
 }

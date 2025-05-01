@@ -1,22 +1,23 @@
 package com.restaurant.rmsbackend.controller;
 
+import com.restaurant.rmsbackend.dto.LoginRequestDTO;
+import com.restaurant.rmsbackend.dto.LoginResponseDTO;
+import com.restaurant.rmsbackend.service.AuthService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "*") // allow frontend to call
+@CrossOrigin(origins = "*")
+
 public class AuthController {
 
+    @Autowired
+    private AuthService authService;
+
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        if (username.equals("admin") && password.equals("admin123")) {
-            return "admin"; // backend tells: user is admin
-        } else if (username.equals("chef") && password.equals("chef123")) {
-            return "chef"; // backend tells: user is chef
-        } else if (username.equals("cashier") && password.equals("cashier123")) {
-            return "cashier"; // backend tells: user is cashier
-        } else {
-            throw new RuntimeException("Invalid username or password!");
-        }
+    public LoginResponseDTO login(@RequestBody LoginRequestDTO request) {
+        return authService.login(request);
     }
+
 }

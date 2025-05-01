@@ -1,27 +1,26 @@
 package com.restaurant.rmsbackend.model;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "users")
 
-public class Invoice {
 
+
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    private Order order;
+    @Column(unique = true, nullable = false)
+    private String username;
 
-    @OneToOne
-    private Payment payment;
+    private String password;
 
-    private double totalAmount;
-
-    private LocalDateTime issuedAt;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }
