@@ -1,30 +1,35 @@
 package com.restaurant.rmsbackend.mapper;
 import com.restaurant.rmsbackend.dto.MenuItemDTO;
+import com.restaurant.rmsbackend.model.Category;
 import com.restaurant.rmsbackend.model.MenuItem;
 import org.springframework.stereotype.Component;
 
 @Component
 public class MenuItemMapper {
-    public MenuItemDTO toDTO(MenuItem item) {
+    public static MenuItemDTO toDTO(MenuItem item) {
         return MenuItemDTO.builder()
                 .id(item.getId())
                 .name(item.getName())
-                .category(item.getCategory())
+                .categoryId(item.getCategory().getId())
+                .categoryName(item.getCategory().getName())
                 .price(item.getPrice())
                 .description(item.getDescription())
                 .available(item.isAvailable())
                 .build();
     }
 
-    public MenuItem toEntity(MenuItemDTO dto) {
+    public static MenuItem toEntity(MenuItemDTO dto, Category category) {
         return MenuItem.builder()
                 .id(dto.getId())
                 .name(dto.getName())
-                .category(dto.getCategory())
+                .category(category)
                 .price(dto.getPrice())
                 .description(dto.getDescription())
                 .available(dto.isAvailable())
                 .build();
     }
+
+
+
 
 }

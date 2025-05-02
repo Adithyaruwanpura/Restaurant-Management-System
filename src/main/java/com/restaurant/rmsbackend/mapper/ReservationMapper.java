@@ -1,5 +1,6 @@
 package com.restaurant.rmsbackend.mapper;
 import com.restaurant.rmsbackend.dto.ReservationDTO;
+import com.restaurant.rmsbackend.model.DiningTable;
 import com.restaurant.rmsbackend.model.Reservation;
 public class ReservationMapper {
     public static ReservationDTO toDTO(Reservation res) {
@@ -10,12 +11,13 @@ public class ReservationMapper {
                 .date(res.getDate())
                 .time(res.getTime())
                 .numberOfGuests(res.getNumberOfGuests())
-                .tableNumber(res.getTableNumber())
+                .tableNumber(res.getTable() != null ? res.getTable().getTableNumber() : null)
                 .status(res.getStatus())
                 .build();
     }
 
-    public static Reservation toEntity(ReservationDTO dto) {
+
+    public static Reservation toEntity(ReservationDTO dto, DiningTable table) {
         return Reservation.builder()
                 .id(dto.getId())
                 .customerName(dto.getCustomerName())
@@ -23,9 +25,8 @@ public class ReservationMapper {
                 .date(dto.getDate())
                 .time(dto.getTime())
                 .numberOfGuests(dto.getNumberOfGuests())
-                .tableNumber(dto.getTableNumber())
+                .table(table)
                 .status(dto.getStatus())
                 .build();
     }
-
 }

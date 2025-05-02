@@ -13,9 +13,13 @@ public class MenuItem {
     @Column(nullable = false)
     private Long id;
     private String name;
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
     private double price;
     private String description;
     private boolean available = true;
+
+
 }
 

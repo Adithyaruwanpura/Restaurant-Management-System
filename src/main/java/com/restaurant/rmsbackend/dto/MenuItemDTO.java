@@ -7,10 +7,14 @@ import lombok.*;
 
 
 public class MenuItemDTO {
-private Long id;
-private String name;
-private String category;
-private  double price;
-private String description;
-private boolean available;
+    private Long id;
+    private String name;
+    private Long categoryId;
+    private String categoryName;
+    private double price;
+    private String description;
+    private boolean available;
 }
+
+
+

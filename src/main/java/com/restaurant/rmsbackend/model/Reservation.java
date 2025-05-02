@@ -24,7 +24,11 @@ public class Reservation {
     private LocalTime time;
 
     private int numberOfGuests;
-    private int tableNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "table_id")
+    private DiningTable table;
+
 
     @Enumerated(EnumType.STRING)
     private ReservationStatus status;

@@ -1,6 +1,18 @@
 package com.restaurant.rmsbackend.repository;
 
 import com.restaurant.rmsbackend.model.Order;
+import com.restaurant.rmsbackend.model.OrderStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface OrderRepository extends JpaRepository<Order, Long> { }
+import java.time.LocalDateTime;
+import java.util.List;
+
+public interface OrderRepository extends JpaRepository<Order, Long> {
+
+    List<Order> findByCreatedTimeBetweenAndStatus(LocalDateTime start, LocalDateTime end, OrderStatus status);
+
+    @Query
+            ("SELECT COUNT(o) FROM Order o WHERE DATE(o.createdTime) = CURRENT_DATE")
+    long countTodayOrders();
+}
