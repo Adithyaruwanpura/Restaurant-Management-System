@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chef Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>👨‍🍳 Chef Dashboard</h1>
+<p>Welcome, <b th:text="${#authentication.name}">chef</b></p>
+
+<h3>Today's Orders</h3>
+<a th:href="@{/api/orders}">📦 View All Orders</a>
+</body>
+</html>

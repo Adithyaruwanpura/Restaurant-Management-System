@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #121212;
+    color: #fff;
+}
+
+.dashboard-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    background: #1c1c1c;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    padding: 12px 20px;
+    text-decoration: none;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+    background: #ff6600;
+}
+
+.dashboard-main {
+    flex: 1;
+    padding: 20px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #222;
+    padding: 15px;
+    margin-right: 15px;
+    border-radius: 8px;
+    display: inline-block;
+    width: 180px;
+}
+
+.order-report table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.order-report th, .order-report td {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cashier Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>💼 Cashier Dashboard</h1>
+<p>Welcome, <b th:text="${#authentication.name}">cashier</b></p>
+
+<ul>
+    <li><a th:href="@{/api/payments}">💰 Process Payments</a></li>
+    <li><a th:href="@{/api/orders}">📝 View Orders</a></li>
+</ul>
+</body>
+</html>

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.reastaurant</groupId>
-    <artifactId>RMS-backend</artifactId>
+    <artifactId>Restaurant-Management-System</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>RMS-backend</name>
-    <description>RMS-backend</description>
+    <name>restaurant-management-system</name>
+    <description>restaurant-management-system</description>
     <url/>
     <licenses>
         <license/>
@@ -68,6 +68,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Welcome to Dashboard</h1>
+
+<div>
+  <p>Total Orders: <span th:text="${totalOrders}">0</span></p>
+  <p>Today's Orders: <span th:text="${todayOrders}">0</span></p>
+  <p>Total Revenue: <span th:text="${totalRevenue}">0.00</span></p>
+  <p>Today's Revenue: <span th:text="${todayRevenue}">0.00</span></p>
+</div>
+
+<hr>
+
+<h3>📈 Daily Revenue Chart (Last 7 Days)</h3>
+<canvas id="revenueChart" width="600" height="300"></canvas>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch("/api/dashboard/daily-revenue?start=2024-05-01&end=2024-05-07") // use dynamic date in real
+            .then(res => res.json())
+            .then(data => {
+              const labels = Object.keys(data);
+              const values = Object.values(data);
+              new Chart(document.getElementById("revenueChart"), {
+                type: 'line',
+                data: {
+                  labels: labels,
+                  datasets: [{
+                    label: 'Daily Revenue',
+                    data: values,
+                    borderColor: 'green',
+                    fill: false
+                  }]
+                }
+              });
+            });
+  });
+</script>
+
+<hr>
+
+<h3>🧾 Recent Orders</h3>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Customer</th>
+    <th>Total Price</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+  <tbody id="orderTable">
+  </tbody>
+</table>
+
+<script>
+  fetch("/api/orders")
+          .then(res => res.json())
+          .then(data => {
+            const table = document.getElementById("orderTable");
+            data.slice(-5).reverse().forEach(order => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                    <td>${order.id}</td>
+                    <td>${order.customerName}</td>
+                    <td>${order.totalPrice}</td>
+                    <td>${order.status}</td>
+                `;
+              table.appendChild(row);
+            });
+          });
+</script>
+
+</body>
+</html>
