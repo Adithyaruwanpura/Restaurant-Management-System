@@ -1,0 +1,365 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html, body {
+            overflow: hidden;
+            height: 100%;
+        }
+
+        body {
+            background-color: #0B161A;
+            color: white;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: #141E20;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px;
+            height: calc(100vh - 30px);
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Main Content */
+        .main-content {
+            margin-left: 310px;
+            padding: 20px;
+            width: calc(100% - 310px);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #543C3B;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .logo-icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        /* Menu Items */
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border-radius: 10px;
+            background-color: transparent;
+            color: #E0E0E0;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item.active {
+            background-color: #0B161A;
+            color: #DA833E;
+            font-weight: 600;
+            margin-right: -30px;
+            border-radius: 16px 0 0 16px;
+        }
+
+        .menu-item.active::before {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: 0;
+            width: 30px;
+            height: 100%;
+            background-color: inherit;
+        }
+
+        .menu-item:hover {
+            background-color: #1a2a30;
+        }
+
+        .menu-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .menu-icon img {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        .menu-text {
+            font-size: 16px;
+        }
+
+        .menu-item.active::after {
+            content: '';
+            position: absolute;
+            right: 20px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #DA833E;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #3A3E55;
+            margin-bottom: 15px;
+        }
+        
+        .header-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .header-date {
+            font-size: 14px;
+            color: #DA833E;
+            font-weight: 400;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-name {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #543C3B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-avatar img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Sections */
+        .summary-section, .orders-section, .search-section {
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .summary-cards {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .summary-card {
+            background-color: #141E20;
+            border-radius: 20px;
+            padding: 15px;
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #aaa;
+        }
+
+        .card-value {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .card-value.earnings {
+            color: #DA833E;
+        }
+
+        /* Orders Table */
+        .orders-table-container {
+            background-color: #141E20;
+            border-radius: 18px;
+            padding: 20px;
+            margin-top: 20px;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto; 
+        }
+
+        .orders-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .orders-table th {
+            padding: 8px 5px;
+            text-align: left;
+            color: #DA833E;
+            font-weight: 600;
+            font-size: 16px;
+            border-bottom: 1px solid #2D7D7F;
+            text-transform: uppercase;
+        }
+
+        .orders-table td {
+            padding: 10px 20px;
+            border-bottom: 1px solid #3A3E55;
+            font-size: 14px;
+        }
+        
+        .orders-table tr {
+            height: 20px;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .status-new { background-color: #1A1DC6; }
+        .status-in-progress { background-color: #C61A1A; }
+        .status-completed { background-color: #25C61A; }
+
+        .status-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pending { 
+            background-color: #34585B;
+            color: #2DC6D3;
+        }
+
+        .cancelled { 
+            background-color: #CC3C3E;
+            color: white;
+        }
+
+        .action-btn {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            background-color: transparent;
+            border: 1px solid #DA833E;
+            color: #DA833E;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: rgba(218, 131, 62, 0.1);
+        }
+
+        .danger-btn {
+            border-color: #CC3C3E;
+            color: #CC3C3E;
+        }
+
+        /* Search */
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 10px;
+            width: 250px;
+        }
+
+        .search-input {
+            background-color: rgba(218, 131, 62, 0.34);
+            border: none;
+            padding: 12px 15px 12px 40px;
+            border-radius: 12px;
+            color: white;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .search-icon {
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            left: 15px;
+            z-index: 1;
+            filter: brightness(0) invert(1);
+        }
+
+        .search-result {
+            color: floralwhite;
+            font-size: 12px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            margin-top: 5px;
+            padding-left: 15px;
+            background-color: rgba(218, 131, 62, 0.15);
+            border-radius: 14px;
+            padding: 6px 10px;
+            display: inline-block;
+        }
