@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/chef")
 public class ChefDashboardController {
+
     @GetMapping("/dashboard")
-    public String chefPage() {
-        return "dashboard-chef";
+    public String chefDashboard() {
+        return "chef/dashboard"; // maps to templates/chef/dashboard.html
     }
 }

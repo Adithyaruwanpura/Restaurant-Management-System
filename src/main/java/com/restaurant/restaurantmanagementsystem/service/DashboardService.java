@@ -55,6 +55,13 @@ public class DashboardService {
         return orderItemRepo.findTopSellingItemsBetween(start, end, top5);
     }
 
+    public List<BestSellerDTO> getCurrentTopBestSellers() {
+        Pageable top3 = PageRequest.of(0, 3);
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime last30Days = now.minusDays(30);
+        return orderItemRepo.findTopSellingItemsBetween(last30Days, now, top3);
+    }
+
 
     public Map<LocalDate, Double> getDailyRevenue(LocalDate start, LocalDate end) {
         return paymentRepo.findByTimestampBetween(start.atStartOfDay(), end.plusDays(1).atStartOfDay())
@@ -63,6 +70,13 @@ public class DashboardService {
                         p -> p.getTimestamp().toLocalDate(),
                         Collectors.summingDouble(p -> p.getAmount())
                 ));
+    }
+    public List<Object[]> getOrderStatusCounts() {
+        return orderRepo.countByStatus(); // Returns List<Object[]: [status, count]
+    }
+
+    public List<Object[]> getOrderTypeCounts() {
+        return orderRepo.countByOrderType();   // Returns List<Object[]: [orderType, count]
     }
 
 

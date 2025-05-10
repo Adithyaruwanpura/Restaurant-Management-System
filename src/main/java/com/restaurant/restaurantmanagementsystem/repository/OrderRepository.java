@@ -15,4 +15,14 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query
             ("SELECT COUNT(o) FROM Order o WHERE DATE(o.createdTime) = CURRENT_DATE")
     long countTodayOrders();
+
+
+    @Query("SELECT o.status, COUNT(o) FROM Order o GROUP BY o.status")
+    List<Object[]> countByStatus();
+
+    @Query("SELECT o.orderType, COUNT(o) FROM Order o GROUP BY o.orderType")
+    List<Object[]> countByOrderType();
+
+
+
 }

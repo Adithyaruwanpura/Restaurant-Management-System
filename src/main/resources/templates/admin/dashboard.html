@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard">
+    <h1>Welcome, Admin</h1>
+    <div class="stats">
+        <div>Total Orders: <span id="totalOrders"></span></div>
+        <div>Total Revenue: <span id="totalRevenue"></span></div>
+        <div>Today's Orders: <span id="todayOrders"></span></div>
+        <div>Today's Revenue: <span id="todayRevenue"></span></div>
+    </div>
+
+    <h2>Top 5 Best Sellers</h2>
+    <ul id="bestsellersList"></ul>
+
+    <h2>Daily Revenue</h2>
+    <canvas id="revenueChart" width="600" height="300"></canvas>
+</div>
+
+<script>
+    // Load stats
+    fetch('/api/dashboard/stats')
+        .then(res => res.json())
+        .then(data => {
+            document.getElementById('totalOrders').innerText = data.totalOrders;
+            document.getElementById('totalRevenue').innerText = data.totalRevenue;
+            document.getElementById('todayOrders').innerText = data.todayOrders;
+            document.getElementById('todayRevenue').innerText = data.todayRevenue;
+        });
+
+    // Load best sellers
+    const now = new Date().toISOString();
+    const past = new Date();
+    past.setDate(past.getDate() - 7); // past 7 days
+    fetch(`/api/dashboard/bestsellers?start=${past.toISOString()}&end=${now}`)
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById('bestsellersList');
+            data.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.itemName} - ${item.totalSold} sold`;
+                list.appendChild(li);
+            });
+        });
+
+    // Load daily revenue chart
+    fetch(`/api/dashboard/daily-revenue?start=${past.toISOString().slice(0,10)}&end=${now.toISOString().slice(0,10)}`)
+        .then(res => res.json())
+        .then(data => {
+            const labels = Object.keys(data);
+            const values = Object.values(data);
+
+            new Chart(document.getElementById("revenueChart"), {
+                type: "line",
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: "Revenue",
+                        data: values,
+                        borderColor: "green",
+                        fill: false
+                    }]
+                }
+            });
+        });
+</script>
+</body>
+</html>

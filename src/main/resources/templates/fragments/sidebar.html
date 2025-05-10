@@ -5,18 +5,20 @@
 
 
 <nav class="sidebar">
-    <ul>
-        <li><a href="/dashboard/admin" class="active">Dashboard</a></li>
-        <li><a href="#">Menu manage</a></li>
-        <li><a href="#">Staff manage</a></li>
-        <li><a href="#">Inventory</a></li>
-        <li><a href="#">Reservations</a></li>
-        <li><a href="#">Report Analytics</a></li>
-        <li><a href="#">Order History</a></li>
-        <li><a href="#">Notifications</a></li>
-        <li><a href="#">Settings</a></li>
+    <ul class="nav-links">
+        <li><a href="#" onclick="loadFragment('dashboard')">Dashboard</a></li>
+        <li><a href="#" onclick="loadFragment('menu')">Menu Items</a></li>
+        <li><a href="#" onclick="loadFragment('staff')">Staff Manage</a></li>
+        <li><a href="#" onclick="loadFragment('inventory')">Inventory</a></li>
+        <li><a href="#" onclick="loadFragment('reservations')">Reservations</a></li>
+        <li><a href="#" onclick="loadFragment('report')">Report Analytics</a></li>
+        <li><a href="#" onclick="loadFragment('order-history')">Order History</a></li>
+        <li><a href="#" onclick="loadFragment('notifications')">Notifications</a></li>
+        <li><a href="#" onclick="loadFragment('settings')">Settings</a></li>
         <li><a href="/logout">Logout</a></li>
+
     </ul>
+
 </nav>
 </div>
 </body>
