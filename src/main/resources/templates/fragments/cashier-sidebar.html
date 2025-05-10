@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-$END$
+<aside th:fragment="sidebar(active)" class="sidebar">
+    <div class="logo">🏠 BISTROFY</div>
+    <nav class="menu">
+        <a th:classappend="${active=='dashboard'}?' active'" href="#" ><span>👜</span>Dashboard</a>
+        <a th:classappend="${active=='orders'}?' active'"      href="#"><span>📋</span>Orders</a>
+        <a th:classappend="${active=='menu'}?' active'"        href="#"><span>📄</span>Menu</a>
+        <a th:classappend="${active=='reservations'}?' active'"href="#"><span>📅</span>Reservations</a>
+        <a th:classappend="${active=='inventory'}?' active'"   href="#"><span>📦</span>Inventory</a>
+        <a th:classappend="${active=='staff'}?' active'"       href="#"><span>📸</span>Staff Dashboard</a>
+        <a th:classappend="${active=='feedback'}?' active'"    href="#"><span>💬</span>Customer Feedback</a>
+        <div class="divider"></div>
+        <div class="section-label">Other</div>
+        <a href="#"><span>⚙️</span>Settings</a>
+        <a href="#"><span>❓</span>Help & Support</a>
+        <a class="logout" href="#"><span>📤</span>Logout</a>
+    </nav>
+</aside>
 </body>
 </html>

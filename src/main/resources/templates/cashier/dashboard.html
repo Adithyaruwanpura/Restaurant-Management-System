@@ -1,11 +1,74 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Cashier Dashboard</title>
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
-<h2>Welcome to the Cashier Dashboard</h2>
-<p>This is where the cashier will see payment and orders info.</p>
+<!-- invoke layout, passing in:
+     pageTitle, pageDate, and the content fragment name -->
+<div th:replace="layout :: layout(
+      'Dashboard',
+      ${#dates.format(today,'EEEE d MMMM, yyyy')},
+      'dashboard/staff-dashboard :: content'
+  )"></div>
+
+<!-- this fragment fills in the six‐card grid + stats row -->
+<div th:fragment="content">
+    <!-- Stats Row -->
+    <div class="stats-row">
+        <div class="card">
+            <h3>TODAY’S ORDERS</h3>
+            <p class="number" th:text="${stats.todayOrders}"></p>
+            <p class="sub">Orders</p>
+        </div>
+        <div class="card">
+            <h3>PENDING ORDERS</h3>
+            <p class="number" th:text="${stats.pendingOrders}"></p>
+        </div>
+        <div class="card">
+            <h3>RESERVATIONS</h3>
+            <p class="number" th:text="${stats.reservations}"></p>
+        </div>
+        <div class="card">
+            <h3>POPULAR DISHES</h3>
+            <div class="bar-chart">
+                <div class="bar" th:style="'height:'+stats.bar1+'px'"></div>
+                <div class="bar" th:style="'height:'+stats.bar2+'px'"></div>
+                <div class="bar" th:style="'height:'+stats.bar3+'px'"></div>
+                <div class="bar" th:style="'height:'+stats.bar4+'px'"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Grid: 3 cols × 2 rows -->
+    <div class="dashboard-grid">
+        <!-- Left Column -->
+        <div class="left-col">
+            <div class="double-buttons">
+                <div><span class="plus">➕</span>ADD MENU ITEM</div>
+                <div><span class="plus">➕</span>ADD RESERVATION</div>
+            </div>
+            <div class="button-box">UPDATE INVENTORY</div>
+            <div class="button-box">ADD RESERVATION</div>
+        </div>
+        <!-- Right Column -->
+        <div class="right-col">
+            <div class="widget">
+                <h4>INVENTORY ALERTS</h4>
+                <a th:href="@{/alerts}">View All</a>
+            </div>
+            <div class="widget">
+                <h4>STAFF ON SHIFT TODAY</h4>
+                <div class="avatars">
+                    <div class="avatar-circle"
+                         th:each="av : ${staffOnShift}"
+                         th:style="'background-image:url('+av.photoUrl+')'">
+                    </div>
+                </div>
+            </div>
+            <div class="widget">
+                <h4>STAFF COUNT</h4>
+                <p class="staff-count" th:text="${staffOnShift.size()}"></p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
