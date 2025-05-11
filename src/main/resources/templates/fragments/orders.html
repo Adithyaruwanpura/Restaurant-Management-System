@@ -1,19 +1,25 @@
-<!-- templates/fragments/orders.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
 <div th:fragment="ordersGrid">
     <div class="cards-container">
         <div class="card" th:each="order : ${orders}">
             <div class="card-header">
-                <h3 th:text="${order.status}">Status</h3>
-                <span class="card-id" th:text="${order.id}">#1234</span>
+                <h3 th:text="${order.status}"></h3>
+                <span class="card-id" th:text="${order.id}"></span>
             </div>
-            <div class="card-body">
-                <p th:each="line : ${order.lines}" th:text="${line}">1x Pizza</p>
-            </div>
+            <div class="card-body" th:text="${order.details}"></div>
             <div class="card-footer">
-                <span class="tag" th:classappend="${order.status}">new</span>
-                <button class="action" th:if="${order.status=='ready'}">Serve</button>
+            <span
+                    class="tag"
+                    th:class="'tag ' + ${order.tag}"
+                    th:text="${order.tag}">
+            </span>
+                <button class="action" th:text="${order.action}"></button>
             </div>
         </div>
     </div>
 </div>
+</body>
+</html>
 

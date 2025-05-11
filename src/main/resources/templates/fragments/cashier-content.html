@@ -1,27 +1,32 @@
 <!-- fragments/cashier-content.html -->
-<div class="tabs">
-    <button class="tab active" onclick="filterCategory('starters')">Starters</button>
-    <button class="tab" onclick="filterCategory('breakfast')">Breakfast</button>
-    <button class="tab" onclick="filterCategory('lunch')">Lunch</button>
-    <button class="tab" onclick="filterCategory('supper')">Supper</button>
-    <button class="tab" onclick="filterCategory('desert')">Desert</button>
-    <button class="tab" onclick="filterCategory('beverages')">Beverages</button>
-</div>
+<div th:fragment="content">
 
-<div class="food-grid" id="foodGrid">
-    <div class="food-card" data-category="starters">
-        <img src="https://via.placeholder.com/150" alt="Food" />
-        <h3>Chicken Shawarma with Potatoes</h3>
-        <p>$24.00</p>
+    <div class="tabs">
+        <button class="tab active" onclick="filterCategory('starters')">Starters</button>
+        <button class="tab" onclick="filterCategory('breakfast')">Breakfast</button>
+        <button class="tab" onclick="filterCategory('lunch')">Lunch</button>
+        <button class="tab" onclick="filterCategory('supper')">Supper</button>
+        <button class="tab" onclick="filterCategory('desert')">Desert</button>
+        <button class="tab" onclick="filterCategory('beverages')">Beverages</button>
     </div>
-    <div class="food-card" data-category="breakfast">
-        <img src="https://via.placeholder.com/150" alt="Food" />
-        <h3>Spiced Indian Scrambled Eggs</h3>
-        <p>$24.00</p>
-    </div>
-    <div class="food-card" data-category="lunch">
-        <img src="https://via.placeholder.com/150" alt="Food" />
-        <h3>Biryani Thali Royalty</h3>
-        <p>$24.00</p>
+
+    <div class="food-grid" id="foodGrid">
+        <div class="food-card" data-category="starters">
+            <img src="https://via.placeholder.com/150" alt="Food" />
+            <h3>Chicken Shawarma with Potatoes</h3>
+            <p>$24.00</p>
+        </div>
+
+        <div class="food-card" data-category="breakfast">
+            <img src="https://via.placeholder.com/150" alt="Food" />
+            <h3>Spiced Indian Scrambled Eggs</h3>
+            <p>$24.00</p>
+        </div>
+
+        <div class="food-card" data-category="lunch">
+            <img src="https://via.placeholder.com/150" alt="Food" />
+            <h3>Biryani Thali Royalty</h3>
+            <p>$24.00</p>
+        </div>
     </div>
 </div>

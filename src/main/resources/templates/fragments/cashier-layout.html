@@ -1,14 +1,33 @@
-<!-- fragments/cashier-layout.html -->
-<div class="container">
-    <div th:replace="fragments/cashier-sidebar.html :: *"></div>
+<!-- templates/fragments/cashier-layout.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cashier Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- ✅ Correct path to CSS in Spring Boot -->
+    <link rel="stylesheet" th:href="@{/css/cashier.css}" />
+
+
+
+</head>
+<body>
+<div class="container" th:fragment="layout">
+
+    <!-- Sidebar fragment -->
+    <div th:replace="fragments/cashier-sidebar.html :: sidebar"></div>
+
+    <!-- Main content -->
     <div class="main">
-        <div th:replace="fragments/cashier-header.html :: *"></div>
-        <div th:replace="fragments/cashier-content.html :: *"></div>
+        <div th:replace="fragments/cashier-header.html :: header"></div>
+        <div th:replace="fragments/cashier-content.html :: content"></div>
     </div>
 
+    <!-- Order panel -->
     <div class="order-panel">
         <h2>Order#30124</h2>
+
         <div class="order-types">
             <button class="active" onclick="selectOrderType(this, 'dinein')">Dine in</button>
             <button onclick="selectOrderType(this, 'takeaway')">Take away</button>
@@ -24,14 +43,14 @@
                 <div>Spiced Indian Scrambled Eggs</div>
                 <label>Qty: <input type="number" value="1" /></label>
                 <label>Discount: <input type="number" value="0" /></label>
-                <div>$24.00</div>
+                <div>$</div>
             </div>
         </div>
 
         <div class="summary">
-            <p>Sub total: $72.00</p>
-            <p>Tax 5%: $3.60</p>
-            <h3>Payable Amount: $75.60</h3>
+            <p>Sub total: </p>
+            <p>Tax 5%: </p>
+            <h3>Payable Amount: </h3>
         </div>
 
         <div class="payment-options">
@@ -43,3 +62,9 @@
         <button class="place-order">Place Order</button>
     </div>
 </div>
+
+<!-- JS -->
+<script th:src="@{/js/cashier.js}"></script>
+</body>
+</html>
+

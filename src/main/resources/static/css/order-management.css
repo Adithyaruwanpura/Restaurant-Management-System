@@ -1,5 +1,9 @@
 /* ─── Reset & Base ────────────────────────────────────────── */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     font-family: 'Segoe UI', sans-serif;
     background: #0e141b;
@@ -7,7 +11,12 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-button, a { background: none; border: none; color: inherit; cursor: pointer; }
+button, a {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+}
 
 /* ─── Layout ───────────────────────────────────────────────── */
 .layout {
@@ -40,7 +49,7 @@ button, a { background: none; border: none; color: inherit; cursor: pointer; }
     font-weight: bold;
     margin-bottom: 2rem;
 }
-.sidebar .logo i { color: #ff6b00; font-size: 1.5rem; }
+.sidebar .logo i { font-size: 1.5rem; }
 .sidebar nav ul { list-style: none; }
 .sidebar nav li {
     display: flex;
@@ -51,9 +60,7 @@ button, a { background: none; border: none; color: inherit; cursor: pointer; }
     transition: color .2s;
 }
 .sidebar nav li:hover,
-.sidebar nav li.active {
-    color: #ff6b00;
-}
+.sidebar nav li.active { color: #ff6b00; }
 .sidebar .other {
     border-top: 1px solid #2a3743;
     padding-top: 1rem;
@@ -62,7 +69,6 @@ button, a { background: none; border: none; color: inherit; cursor: pointer; }
 /* ─── Header ───────────────────────────────────────────────── */
 .header {
     margin-bottom: .5rem;
-    position: relative;
 }
 .header h1 {
     font-size: 1.5rem;
@@ -86,12 +92,12 @@ button, a { background: none; border: none; color: inherit; cursor: pointer; }
 .divider {
     height: 1px;
     background: #2a3743;
-    margin: 1rem 0;
+    margin: 1rem 0 1rem;
 }
 
 /* ─── Cards Grid ──────────────────────────────────────────── */
 .cards-container {
-    flex: 1; /* take the rest of the vertical space */
+    flex: 1;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -113,9 +119,7 @@ button, a { background: none; border: none; color: inherit; cursor: pointer; }
     align-items: center;
     margin-bottom: 1rem;
 }
-.card-header h3 {
-    font-size: 1.2rem;
-}
+.card-header h3 { font-size: 1.2rem; }
 .card-header .card-id {
     font-size: .9rem;
     color: #9ca3af;

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="pageHeader(title, subtitle)">
+    <div class="header">
+        <h1 th:text="${title}">Order Management</h1>
+        <p th:text="${subtitle}">Date</p>
+    </div>
+    <div class="header-icons">
+        <i class="fas fa-bell"></i>
+        <i class="fas fa-user-circle"></i>
+    </div>
+    <div class="divider"></div>
+</div>
+</body>
+</html>
