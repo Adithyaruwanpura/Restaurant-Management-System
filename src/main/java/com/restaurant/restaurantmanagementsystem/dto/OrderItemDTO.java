@@ -9,5 +9,8 @@ import lombok.*;
 
 public class OrderItemDTO {
     private Long menuItemId;
+    private String itemName;
     private int quantity;
-    private double itemPrice; }
+    private double itemPrice;
+    private String imageFilename;
+}

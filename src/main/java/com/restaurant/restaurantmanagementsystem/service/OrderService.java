@@ -80,5 +80,61 @@ public class OrderService {
 
     }
 
+    public List<OrderDTO> getRecentOrders() {
+        return orderRepo.findTop10ByOrderByCreatedTimeDesc().stream()
+                .map(OrderMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public String exportOrdersAsCSV() {
+        List<OrderDTO> orders = getAllOrders(); // Or apply filters as needed
+        StringBuilder sb = new StringBuilder();
+
+        // Header
+        sb.append("Order ID,Customer Name,Total Price,Status,Created Time\n");
+
+        // Data
+        for (OrderDTO order : orders) {
+            sb.append(order.getId()).append(",")
+                    .append(order.getCustomerName()).append(",")
+                    .append(order.getTotalPrice()).append(",")
+                    .append(order.getStatus()).append(",")
+                    .append(order.getCreatedTime()).append("\n");
+        }
+
+        return sb.toString();
+    }
+
+
+    public List<OrderDTO> filterOrders(String status, String customerName) {
+        List<Order> orders;
+
+        OrderStatus orderStatus = null;
+        if (status != null && !status.isEmpty()) {
+            try {
+                orderStatus = OrderStatus.valueOf(status.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                // Invalid status provided, return empty result or all orders based on preference
+                return List.of(); // Or: orders = orderRepo.findAll();
+            }
+        }
+
+        if (orderStatus != null && customerName != null && !customerName.isEmpty()) {
+            orders = orderRepo.findByStatusAndCustomerNameContainingIgnoreCase(orderStatus, customerName);
+        } else if (orderStatus != null) {
+            orders = orderRepo.findByStatus(orderStatus);
+        } else if (customerName != null && !customerName.isEmpty()) {
+            orders = orderRepo.findByCustomerNameContainingIgnoreCase(customerName);
+        } else {
+            orders = orderRepo.findAll();
+        }
+
+        return orders.stream()
+                .map(OrderMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+
+
 
 }

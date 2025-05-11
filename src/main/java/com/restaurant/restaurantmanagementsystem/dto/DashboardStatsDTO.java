@@ -12,5 +12,10 @@ public class DashboardStatsDTO {
     private long todayOrders;
     private double todayRevenue;
     private long activeStaff;
+    private long todayReservations;
+
+    private double revenueChangePercent;
+    private double ordersChangePercent;
+    private double reservationsChangePercent;
 
 }

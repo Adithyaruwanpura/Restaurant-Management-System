@@ -1,10 +1,7 @@
 package com.restaurant.restaurantmanagementsystem.service;
 import com.restaurant.restaurantmanagementsystem.dto.DashboardStatsDTO;
 import com.restaurant.restaurantmanagementsystem.dto.BestSellerDTO;
-import com.restaurant.restaurantmanagementsystem.repository.OrderItemRepository;
-import com.restaurant.restaurantmanagementsystem.repository.OrderRepository;
-import com.restaurant.restaurantmanagementsystem.repository.PaymentRepository;
-import com.restaurant.restaurantmanagementsystem.repository.UserRepository;
+import com.restaurant.restaurantmanagementsystem.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -32,22 +29,48 @@ public class DashboardService {
     @Autowired
     private UserRepository userRepo;
 
+    @Autowired
+    private ReservationRepository reservationRepo;
+
+
     public DashboardStatsDTO getStats() {
-        long totalOrders = orderRepo.count();
-        long todayOrders = orderRepo.countTodayOrders();
-        double totalRevenue = paymentRepo.getTotalRevenue() != null ? paymentRepo.getTotalRevenue() : 0.0;
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);
+
+        // Fetch revenue
         double todayRevenue = paymentRepo.getTodayRevenue() != null ? paymentRepo.getTodayRevenue() : 0.0;
+        double yesterdayRevenue = paymentRepo.getRevenueByDate(yesterday) != null ? paymentRepo.getRevenueByDate(yesterday) : 0.0;
+        double revenueChangePercent = calculateChangePercentage(todayRevenue, yesterdayRevenue);
+
+        // Fetch orders
+        long todayOrders = orderRepo.countByDate(today);
+        long yesterdayOrders = orderRepo.countByDate(yesterday);
+        double ordersChangePercent = calculateChangePercentage(todayOrders, yesterdayOrders);
+
+        // Fetch reservations
+        long todayReservations = reservationRepo.countByDate(today);
+        long yesterdayReservations = reservationRepo.countByDate(yesterday);
+        double reservationsChangePercent = calculateChangePercentage(todayReservations, yesterdayReservations);
+
+        // Active Staff
         long activeStaff = userRepo.countActiveStaff();
 
         return DashboardStatsDTO.builder()
-                .totalOrders(totalOrders)
-                .totalRevenue(totalRevenue)
-                .todayOrders(todayOrders)
                 .todayRevenue(todayRevenue)
+                .todayOrders(todayOrders)
+                .todayReservations(todayReservations)
+                .revenueChangePercent(revenueChangePercent)
+                .ordersChangePercent(ordersChangePercent)
+                .reservationsChangePercent(reservationsChangePercent)
                 .activeStaff(activeStaff)
                 .build();
     }
 
+
+    private double calculateChangePercentage(double today, double yesterday) {
+        if (yesterday == 0) return today > 0 ? 100.0 : 0.0;
+        return ((today - yesterday) / yesterday) * 100.0;
+    }
 
 
     public List<BestSellerDTO> getTopBestSellers(LocalDateTime start, LocalDateTime end) {

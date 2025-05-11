@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface InventoryItemRepository extends JpaRepository<InventoryItem, Long> {
     List<InventoryItem> findByQuantityLessThanEqual(int threshold);
+    List<InventoryItem> findByQuantityLessThan(int threshold);
+
 }

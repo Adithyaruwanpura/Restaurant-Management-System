@@ -38,6 +38,8 @@ public class OrderMapper {
         List<OrderItemDTO> items = order.getItems().stream().map(i ->
                 OrderItemDTO.builder()
                         .menuItemId(i.getMenuItem().getId())
+                        .itemName(i.getMenuItem().getName())
+                        .imageFilename(i.getMenuItem().getImageFilename())
                         .quantity(i.getQuantity())
                         .itemPrice(i.getItemPrice())
                         .build()
@@ -48,7 +50,7 @@ public class OrderMapper {
                 .customerName(order.getCustomerName())
                 .orderType(order.getOrderType())
                 .tableNumber(order.getTableNumber())
-                .status(order.getStatus())
+                .status(order.getStatus())  // Keep Enum directly
                 .totalPrice(order.getTotalPrice())
                 .createdTime(order.getCreatedTime())
                 .items(items)

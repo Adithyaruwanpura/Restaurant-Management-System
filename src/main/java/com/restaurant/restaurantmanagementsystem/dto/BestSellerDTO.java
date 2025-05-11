@@ -9,4 +9,5 @@ import lombok.*;
 public class BestSellerDTO {
     private String itemName;
     private long totalSold;
+    private String imageFilename;
 }
