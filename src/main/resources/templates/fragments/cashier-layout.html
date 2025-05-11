@@ -1,0 +1,45 @@
+<!-- fragments/cashier-layout.html -->
+<div class="container">
+    <div th:replace="fragments/cashier-sidebar.html :: *"></div>
+
+    <div class="main">
+        <div th:replace="fragments/cashier-header.html :: *"></div>
+        <div th:replace="fragments/cashier-content.html :: *"></div>
+    </div>
+
+    <div class="order-panel">
+        <h2>Order#30124</h2>
+        <div class="order-types">
+            <button class="active" onclick="selectOrderType(this, 'dinein')">Dine in</button>
+            <button onclick="selectOrderType(this, 'takeaway')">Take away</button>
+            <button onclick="selectOrderType(this, 'delivery')">Delivery</button>
+        </div>
+
+        <div class="takeaway-bar" id="takeawayBar">
+            📦 Takeaway selected - please pack securely!
+        </div>
+
+        <div class="order-list">
+            <div class="order-item">
+                <div>Spiced Indian Scrambled Eggs</div>
+                <label>Qty: <input type="number" value="1" /></label>
+                <label>Discount: <input type="number" value="0" /></label>
+                <div>$24.00</div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <p>Sub total: $72.00</p>
+            <p>Tax 5%: $3.60</p>
+            <h3>Payable Amount: $75.60</h3>
+        </div>
+
+        <div class="payment-options">
+            <button>💵 Cash</button>
+            <button>💳 Card</button>
+            <button>📱 QR Code</button>
+        </div>
+
+        <button class="place-order">Place Order</button>
+    </div>
+</div>

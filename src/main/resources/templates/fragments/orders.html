@@ -1,4 +1,19 @@
+<!-- templates/fragments/orders.html -->
+<div th:fragment="ordersGrid">
+    <div class="cards-container">
+        <div class="card" th:each="order : ${orders}">
+            <div class="card-header">
+                <h3 th:text="${order.status}">Status</h3>
+                <span class="card-id" th:text="${order.id}">#1234</span>
+            </div>
+            <div class="card-body">
+                <p th:each="line : ${order.lines}" th:text="${line}">1x Pizza</p>
+            </div>
+            <div class="card-footer">
+                <span class="tag" th:classappend="${order.status}">new</span>
+                <button class="action" th:if="${order.status=='ready'}">Serve</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-
-    <h2>Order Management</h2>
-    <p style="color:white;">View and manage orders here. Coming soon!</p>

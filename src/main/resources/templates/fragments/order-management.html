@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Order Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{/static.CSS/order-management.css}"/>
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- include sidebar -->
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <!-- main content -->
+    <main class="main">
+
+        <!-- dynamic header -->
+        <div th:replace="fragments/header :: pageHeader('Order Management','Tuesday, 8 April')"></div>
+
+        <!-- dynamic grid of order cards -->
+        <div th:replace="fragments/orders :: ordersGrid"></div>
+
+    </main>
+</div>
+
+</body>
+</html>

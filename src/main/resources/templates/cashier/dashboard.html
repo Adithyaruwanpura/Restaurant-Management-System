@@ -1,11 +1,31 @@
+<!-- templates/cashier/dashboard.html -->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cashier Dashboard</title>
+    <link rel="stylesheet" th:href="@{/static.CSS/cashier.css}">
+    <script th:inline="javascript">
+        function filterCategory(category) {
+            const cards = document.querySelectorAll('.food-card');
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            cards.forEach(card => {
+                card.style.display = card.dataset.category === category ? 'block' : 'none';
+            });
+        }
+
+        function selectOrderType(button, type) {
+            const allButtons = document.querySelectorAll('.order-types button');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            document.getElementById('takeawayBar').style.display = (type === 'takeaway') ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
-<h2>Welcome to the Cashier Dashboard</h2>
-<p>This is where the cashier will see payment and orders info.</p>
+<div th:replace="fragments/cashier-layout.html ::"></div>
 </body>
 </html>
