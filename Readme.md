@@ -1,6 +1,6 @@
 # 🍽️ Restaurant Management System (RMS)
 
-A complete Restaurant Management System integrating a powerful backend built with **Spring Boot** and a modern frontend developed using **React**, **Vite**, and **Tailwind CSS**. This system efficiently handles restaurant operations such as reservations, orders, payments, and staff management, offering a seamless user experience.
+A Restaurant Management System integrating a powerful backend built with **Spring Boot** and a modern frontend developed using **React**, **Vite**, and **Tailwind CSS**. This system efficiently handles restaurant operations such as reservations, orders, payments, and staff management, offering a seamless user experience.
 
 ---
 
