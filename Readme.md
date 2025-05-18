@@ -1,73 +1,49 @@
-# Project Setup Instructions
+# 🍽️ Restaurant Management System (RMS)
 
-Follow these steps to run the React frontend with the Spring Boot backend.
+A complete Restaurant Management System integrating a powerful backend built with **Spring Boot** and a modern frontend developed using **React**, **Vite**, and **Tailwind CSS**. This system efficiently handles restaurant operations such as reservations, orders, payments, and staff management, offering a seamless user experience.
 
-## Prerequisites
+---
 
-- Node.js and npm installed
-- Java (JDK 11 or above) installed
-- MySQL or compatible database installed
+## 🚀 Features
 
-## 1. Database Setup
+- 🔐 **Authentication & Role-Based Access** (Admin, Chef, Cashier)
+- 📅 **Reservation Management** (Walk-In & Phone Bookings)
+- 📋 **Menu & Category Management**
+- 🧾 **Order Management with Payment Processing**
+- 📈 **Dynamic Dashboards & Real-time Statistics**
+- 📦 **Inventory Management**
+- 💰 **Revenue and Sales Reports**
+- 📱 **Responsive and Modern User Interface (Tailwind CSS)**
 
-1. Create a new database in your SQL server.
-2. Run the provided SQL files in your database to set up the schema and initial data.
+---
 
-    ```sh
-    run restaurantSetup.sql and run restaurantInsert.sql in your mysql database.
-    I have added some delete on cascade rules
-    ```
+## 📂 Project Structure
 
-## 2. Backend (Spring Boot) Setup
+/backend → Spring Boot API (Java + MySQL)
+/frontend → React + Vite + Tailwind CSS
+---
 
-1. Navigate to the backend directory:
+## 🛠️ Tech Stack
 
-    ```sh
-    cd re
-    ```
+- **Backend**: Spring Boot, Spring Security, JWT Authentication, MySQL
+- **Frontend**: React.js, Vite, Tailwind CSS, Chart.js
+- **Authentication**: JWT Token-Based Authentication
+- **Database**: MySQL (Localhost)
+- **APIs**: RESTful APIs with Spring Boot Controllers
+- **Version Control**: Git & GitHub
 
-2. Configure your database connection in `application.properties`.
-3. Build and run the Spring Boot application:
+---
 
-    
+## 📦 How to Run the Project
 
-    
+### 📌 Backend (Spring Boot)
 
-    ```sh
-    mvn spring-boot:run
-    ```
-    or
-    ```sh
-    run main java application from vscode
-    ```
+```bash
+cd backend
+./mvnw spring-boot:run
 
-## 3. Frontend (React) Setup
+cd frontend
+npm install
+npm run dev
 
-1. Navigate to the frontend directory:
 
-    ```sh
-    cd frontend
-    ```
-
-2. Install dependencies:
-
-    ```sh
-    npm install
-    ```
-
-3. Start the React development server:
-
-    ```sh
-    npm start
-    ```
-
-## 4. Access the Application
-
-- The React app will be running at [http://localhost:5173](http://localhost:3000)
-### If the frontend runs on different port make sure to add it in the backend security config files for cors policies
-- The Spring Boot backend will be running at [http://localhost:8080](http://localhost:8080)
-
-## Notes
-
-- Make sure the backend is running before using the frontend.
-- Update API endpoints in the React app if your backend runs on a different port.
