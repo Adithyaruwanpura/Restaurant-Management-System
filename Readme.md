@@ -77,9 +77,9 @@ Interactive Charts for Sales and Revenue Visualization
 Fully Responsive Design with Tailwind CSS
 
 👨‍💻 Contributors
-Adithyaruwanpura – Backend Developer & Project Lead
+Adithyaruwanpura – Backend Developer
 
-[Your Friend’s Name] – Frontend Developer
+prarthana karunadasa ,chanudi neha ,harsha jayamal,chamika akalanka ,isuru hansa,janitha chathuranga – Frontend Developers/UI Ux Designers 
 
 📜 License
 This project is licensed under the MIT License.
