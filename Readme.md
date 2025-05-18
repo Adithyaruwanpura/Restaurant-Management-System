@@ -46,4 +46,54 @@ cd frontend
 npm install
 npm run dev
 
+Frontend will run at: http://localhost:5173
+
+📚 Usage Instructions
+Login using the assigned role credentials:
+
+Admin Dashboard: /admin/dashboard
+
+Chef Dashboard: /chef/dashboard
+
+Cashier Dashboard: /cashier/dashboard
+
+Manage Reservations via Walk-In or Phone Bookings.
+
+Manage Orders and mark payments as complete using the "Mark as Paid" feature.
+
+Generate Sales and Revenue Reports directly from the Admin Dashboard.
+
+Visualize Best Selling Items and daily revenue trends using integrated charts.
+
+🎨 UI Highlights
+Clean and Modern Dashboard Layouts
+
+Dynamic Order Reports with Customer Avatars
+
+Real-Time Order Status Updates
+
+Interactive Charts for Sales and Revenue Visualization
+
+Fully Responsive Design with Tailwind CSS
+
+👨‍💻 Contributors
+Adithyaruwanpura – Backend Developer & Project Lead
+
+[Your Friend’s Name] – Frontend Developer
+
+📜 License
+This project is licensed under the MIT License.
+
+
+
+---
+
+Would you like me to also provide a proper `.gitignore` file now? 😊
+
+
+
+
+
+
+
 
