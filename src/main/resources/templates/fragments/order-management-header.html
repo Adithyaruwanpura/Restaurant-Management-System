@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header(title, date)" class="header">
+    <h1 th:text="${title}">Page Title</h1>
+    <p th:text="${date}">Today’s Date</p>
+    <div class="header-icons">
+        <i class="fas fa-bell"></i>
+        <i class="fas fa-user-circle"></i>
+    </div>
+</div>
+</body>
+</html>

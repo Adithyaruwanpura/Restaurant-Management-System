@@ -1,0 +1,13 @@
+<!-- templates/fragments/header.html -->
+<div th:fragment="pageHeader(title,subtitle)">
+    <div class="header">
+        <h1 th:text="${title}">Page Title</h1>
+        <p th:text="${subtitle}">Date</p>
+        <div class="header-icons">
+            <i class="fas fa-bell"></i>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </div>
+    <div class="divider"></div>
+</div>
+
