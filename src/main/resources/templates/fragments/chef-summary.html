@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chef Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/chef-dashboard.css}">
+</head>
+<body>
+<div class="summary-section">
+    <div class="section-title">Today's Summary</div>
+    <div class="summary-cards">
+        <div class="summary-card">
+            <div class="card-title">Total Orders</div>
+            <div class="card-value">0</div>
+        </div>
+        <div class="summary-card">
+            <div class="card-title">Inventory Alerts</div>
+            <div class="card-value">0</div>
+        </div>
+        <div class="summary-card">
+            <div class="card-title">In Progress Orders</div>
+            <div class="card-value">0</div>
+        </div>
+        <div class="summary-card">
+            <div class="card-title">Completed Orders</div>
+            <div class="card-value">0</div>
+        </div>
+        <div class="summary-card">
+            <div class="card-title">Daily Earnings</div>
+            <div class="card-value earnings">0 LKR</div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    // Function to fetch data from API
+    async function fetchDashboardData() {
+        try {
+            const response = await fetch('/api/summary');
+            if (!response.ok) throw new Error('Failed to fetch data');
+            const data = await response.json();
+            updateDashboard(data);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to load dashboard data');
+        }
+    }
+
+    // Function to update the dashboard
+    function updateDashboard(data) {
+        document.getElementById('total-orders').textContent = data.totalOrders;
+        document.getElementById('inventory-alerts').textContent = data.inventoryAlerts;
+        document.getElementById('in-progress').textContent = data.inProgressOrders;
+        document.getElementById('completed-orders').textContent = data.completedOrders;
+        document.getElementById('daily-earnings').textContent = `${data.dailyEarnings} LKR`;
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', fetchDashboardData);
+</script>
